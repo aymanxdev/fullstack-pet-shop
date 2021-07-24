@@ -1,3 +1,5 @@
 {
-    "dbURI": ""
+    "dbURI": "",
+    "jwtsecret": "your jwt secret",
+    "StripeAPIKey": "YOUR STRIPE SECRET API KEY"
 }
