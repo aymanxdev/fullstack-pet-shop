@@ -8,6 +8,7 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   AUTH_ERROR,
+  LOGOUT_SUCCESS
 } from "./type";
 
 export const loadUser = () => (dispatch, getState) => {
@@ -81,4 +82,36 @@ export const login = ({email, password}) => dispatch => {
         type: LOGIN_FAIL,
     })}
     )
+}
+
+//logout user
+export const logout = () => {
+  return {
+    type: LOGOUT_SUCCESS
+  }
+}
+
+//headers, config, and token setup
+
+export const tokenConfig = getState =>{
+
+  //get token from local stoarge
+
+  const token = getState().auth.token
+
+  //Headers 
+
+  const config ={
+    headers = {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  //check if token exists 
+
+  if (token) {
+    config.headers['x-auth-token'] = token
+  }
+
+  return config
 }
