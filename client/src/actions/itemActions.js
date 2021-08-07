@@ -39,6 +39,34 @@ export const addItem = (item) => (dispatch) => {
     );
 };
 
+export const deleteItem = (id) => (dispatch) => {
+  axios
+    .delete(`/api/items/${id}`)
+    .then((res) =>
+      dispatch({
+        type: DELTE_ITEM,
+        payload: id,
+      })
+    )
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};
+
+export const updateItem = (id, item) => (dispatch) => {
+  axios
+    .put(`/api/items/${id}`, item)
+    .then((res) =>
+      dispatch({
+        type: UPDATE_ITEM,
+        payload: res.data,
+      })
+    )
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
+};
+
 export const setItemsLoading = () => {
   return {
     type: ITEMS_LOADING,
