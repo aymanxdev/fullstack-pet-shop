@@ -1,5 +1,0 @@
-{
-    "dbURI": "Not yet",
-    "jwtsecret": "YOUR JWT SECRET",
-    "StripeAPIKey": "YOUR STRIPE SECRET API KEY"
-}

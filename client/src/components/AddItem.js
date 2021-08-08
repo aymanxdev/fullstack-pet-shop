@@ -96,7 +96,7 @@ class AddItem extends Component {
             </Form>
           ) : (
             <Alert className="text-center" color="danger">
-              Login to add items!
+              Login to add products!
             </Alert>
           )}
         </Container>
