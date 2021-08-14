@@ -1,17 +1,15 @@
 import axios from "axios";
-import { returnErrors } from "./errorActions";
-
 import {
   GET_ITEMS,
   ADD_ITEM,
-  DELTE_ITEM,
+  DELETE_ITEM,
   UPDATE_ITEM,
   ITEMS_LOADING,
 } from "./type";
+import { returnErrors } from "./errorActions";
 
 export const getItems = () => (dispatch) => {
   dispatch(setItemsLoading());
-
   axios
     .get("/api/items")
     .then((res) =>
@@ -44,7 +42,7 @@ export const deleteItem = (id) => (dispatch) => {
     .delete(`/api/items/${id}`)
     .then((res) =>
       dispatch({
-        type: DELTE_ITEM,
+        type: DELETE_ITEM,
         payload: id,
       })
     )
@@ -59,7 +57,7 @@ export const updateItem = (id, item) => (dispatch) => {
     .then((res) =>
       dispatch({
         type: UPDATE_ITEM,
-        payload: res.data,
+        payload: Promise.all([id, res.data]),
       })
     )
     .catch((err) =>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { returnErrors } from "./errorActions";
-import { GET_ORDERS, ORDERS_LOADING, CHECKOUT } from "/.type";
+import { GET_ORDERS, ORDERS_LOADING, CHECKOUT } from "./type";
 
 export const getOrders = (id) => (dispatch) => {
   dispatch(setOrdersLoading());

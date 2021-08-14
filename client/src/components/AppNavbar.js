@@ -1,9 +1,4 @@
 import { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import RegisterModal from "./auth/RegisterModal";
-import Logout from "./auth/Logout";
-import LoginModal from "./auth/loginModal";
 import {
   Collapse,
   Navbar,
@@ -14,21 +9,30 @@ import {
   Container,
   NavLink,
 } from "reactstrap";
+import RegisterModal from "./auth/RegisterModal";
+import Logout from "./auth/Logout";
+import LoginModal from "./auth/LoginModal";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-class Navbar extends Component {
+class AppNavbar extends Component {
   state = {
     isOpen: false,
   };
-  static PropTypes = {
+
+  static propTypes = {
     auth: PropTypes.object.isRequired,
   };
 
   toggle = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
   };
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
+
     const authLinks = (
       <Fragment>
         <NavItem>
@@ -84,4 +88,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, null)(Navbar);
+export default connect(mapStateToProps, null)(AppNavbar);

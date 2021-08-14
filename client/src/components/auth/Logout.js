@@ -5,7 +5,7 @@ import { NavLink, Button } from "reactstrap";
 import PropTypes from "prop-types";
 
 export class Logout extends Component {
-  static PropTypes = {
+  static propTypes = {
     logout: PropTypes.func.isRequired,
   };
 

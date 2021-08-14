@@ -24,25 +24,24 @@ class LoginModal extends Component {
     msg: null,
   };
 
-  static PropTypes = {
+  static propTypes = {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
     login: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired,
   };
-
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
-
-    if (error.id !== prevProps.error) {
-      //check login errors
+    if (error !== prevProps.error) {
+      // Check for login error
       if (error.id === "LOGIN_FAIL") {
         this.setState({ msg: error.msg.msg });
       } else {
         this.setState({ msg: null });
       }
     }
-    //if authentication passes
+
+    // If authenticated, close modal
     if (this.state.modal) {
       if (isAuthenticated) {
         this.toggle();
@@ -51,8 +50,8 @@ class LoginModal extends Component {
   }
 
   toggle = () => {
-    //clear errors
-    this.state.clearErrors();
+    // Clear errors
+    this.props.clearErrors();
     this.setState({
       modal: !this.state.modal,
     });

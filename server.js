@@ -1,25 +1,35 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const path = require("path")
-const config = require("config")
+const express = require("express");
+const mongoose = require("mongoose");
+const path = require("path");
+const config = require("config");
 
-//call express app and start using it
-const app = express()
-app.use(express.json())
+const authRoutes = require("./routes/auth");
+const itemRoutes = require("./routes/item");
+const cartRoutes = require("./routes/cart");
+const orderRoutes = require("./routes/order");
 
-// serve client files in production
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/build'));
-    app.get('*', (req, res) => {
-    res.sendFile(path.resolve('client', 'build', 'index.html'));
-    });
+const app = express();
+app.use(express.json());
+
+app.use("/api", authRoutes);
+app.use("/api", itemRoutes);
+app.use("/api", cartRoutes);
+app.use("/api", orderRoutes);
+
+if (process.env.NODE_ENV !== "development") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 }
 
-// connecting to MongoDB and running server on port 4000
-const dbURI = config.get('dbURI')
-const port = process.env.PORT || 4000
-mongoose.connect('dbURI', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
-.then((result) => app.listen(port))
-.catch((err) => console.log(err))
-
-
+const dbURI = config.get("dbURI");
+const port = process.env.PORT || 4000;
+mongoose
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
+  .then((result) => app.listen(port))
+  .catch((err) => console.log(err));

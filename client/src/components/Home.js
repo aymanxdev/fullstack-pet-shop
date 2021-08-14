@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Navbar from "./Navbar";
+import AppNavbar from "./AppNavbar";
 import {
   Card,
   CardText,
@@ -37,7 +37,7 @@ class Home extends Component {
     const user = this.props.user;
     return (
       <div>
-        <Navbar />
+        <AppNavbar />
         <Container>
           <div className="row">
             {items.map((item) => (

@@ -11,7 +11,7 @@ const initialState = {
   loading: false,
 };
 
-export default function (state = initialState, action) {
+export default function foo(state = initialState, action) {
   switch (action.type) {
     case ITEMS_LOADING:
       return {
@@ -33,8 +33,8 @@ export default function (state = initialState, action) {
       const { id, data } = action.payload;
       return {
         ...state,
-        items: state.items.map((item) => {
-          if (item._id == id) {
+        items: state.items.forEach((item) => {
+          if (item._id === id) {
             item = data;
           }
         }),
