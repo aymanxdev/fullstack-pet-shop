@@ -1,20 +1,20 @@
 import { Component } from "react";
-import PropTypes from "prop-types";
-import { register } from "../../actions/authActions";
-import { clearErrors } from "../../actions/errorActions";
-import { connect } from "react-redux";
 import {
   Button,
   Modal,
-  ModalBody,
   ModalHeader,
+  ModalBody,
   Form,
   FormGroup,
-  Alert,
-  Input,
   Label,
+  Input,
   NavLink,
+  Alert,
 } from "reactstrap";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { register } from "../../actions/authActions";
+import { clearErrors } from "../../actions/errorActions";
 
 class RegisterModal extends Component {
   state = {
@@ -78,8 +78,8 @@ class RegisterModal extends Component {
   render() {
     return (
       <div className="container">
-        <Button className="btn btn-sm" color="info">
-          <NavLink onChange={this.toggle}>
+        <Button color="info" className="btn btn-sm">
+          <NavLink onClick={this.toggle} href="#">
             <span className="text-dark">
               <b>Register</b>
             </span>

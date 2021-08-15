@@ -66,8 +66,7 @@ class Orders extends Component {
                   <Card>
                     <CardBody>
                       <CardTitle tag="h4">
-                        {order.items.length} items - Total cost: Rs.{" "}
-                        {order.bill}
+                        {order.items.length} items - Total cost: £ {order.bill}
                       </CardTitle>
                       <div className="row">
                         {order.items.map((item) => (
@@ -78,7 +77,7 @@ class Orders extends Component {
                                   {item.name} ({item.quantity} pieces)
                                 </CardTitle>
                                 <CardSubtitle tag="h6">
-                                  Rs. {item.price}/piece
+                                  £ {item.price}/piece
                                 </CardSubtitle>
                               </CardBody>
                             </Card>

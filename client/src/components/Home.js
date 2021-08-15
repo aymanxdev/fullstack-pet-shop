@@ -45,7 +45,7 @@ class Home extends Component {
                 <Card className="mb-4">
                   <CardBody>
                     <CardTitle tag="h5">{item.title}</CardTitle>
-                    <CardSubtitle tag="h6">Rs. {item.price}</CardSubtitle>
+                    <CardSubtitle tag="h6">£ {item.price}</CardSubtitle>
                     <CardText>{item.category}</CardText>
                     {this.props.isAuthenticated ? (
                       <Button

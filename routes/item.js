@@ -1,10 +1,10 @@
 const { Router } = require("express");
-const itemConroller = require("../controllers/itemControllers");
+const itemController = require("../controllers/itemControllers");
 const router = Router();
 
-router.get("/item", itemConroller.get_items);
-router.post("/items", itemConroller.post_item);
-router.put("/items/:id", itemConroller.update_item);
-router.delete("/items/:id", itemConroller.delete_item);
+router.get("/items", itemController.get_items);
+router.post("/items", itemController.post_item);
+router.put("/items/:id", itemController.update_item);
+router.delete("/items/:id", itemController.delete_item);
 
 module.exports = router;

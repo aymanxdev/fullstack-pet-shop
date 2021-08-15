@@ -90,13 +90,13 @@ class AddItem extends Component {
                 />
 
                 <Button color="dark" style={{ marginTop: "2rem" }} block>
-                  Add Product
+                  Add Item
                 </Button>
               </FormGroup>
             </Form>
           ) : (
             <Alert className="text-center" color="danger">
-              Login to add products!
+              Login to add items!
             </Alert>
           )}
         </Container>

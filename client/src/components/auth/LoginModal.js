@@ -1,8 +1,4 @@
 import { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { login } from "../../actions/authActions";
-import { clearErrors } from "../../actions/errorActions";
 import {
   Button,
   Modal,
@@ -10,11 +6,15 @@ import {
   ModalBody,
   Form,
   FormGroup,
-  Input,
   Label,
+  Input,
   NavLink,
   Alert,
 } from "reactstrap";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login } from "../../actions/authActions";
+import { clearErrors } from "../../actions/errorActions";
 
 class LoginModal extends Component {
   state = {
@@ -30,10 +30,11 @@ class LoginModal extends Component {
     login: PropTypes.func.isRequired,
     clearErrors: PropTypes.func.isRequired,
   };
+
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
     if (error !== prevProps.error) {
-      // Check for login error
+      // Check for register error
       if (error.id === "LOGIN_FAIL") {
         this.setState({ msg: error.msg.msg });
       } else {
@@ -67,8 +68,7 @@ class LoginModal extends Component {
     const { email, password } = this.state;
     const user = { email, password };
 
-    //try to login
-
+    // Attempt to login
     this.props.login(user);
   };
 
@@ -77,13 +77,13 @@ class LoginModal extends Component {
       <div className="container">
         <Button color="success" className="btn btn-sm">
           <NavLink onClick={this.toggle} href="#">
-            <span>
+            <span className="text-dark">
               <b>Login</b>
             </span>
           </NavLink>
         </Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}> Login </ModalHeader>
+          <ModalHeader toggle={this.toggle}>Login</ModalHeader>
           <ModalBody>
             {this.state.msg ? (
               <Alert color="danger">{this.state.msg}</Alert>
@@ -95,8 +95,8 @@ class LoginModal extends Component {
                   type="email"
                   name="email"
                   id="email"
-                  className="mb-3"
                   placeholder="Email"
+                  className="mb-3"
                   onChange={this.onChange}
                 />
                 <Label for="password">Password</Label>
@@ -104,11 +104,11 @@ class LoginModal extends Component {
                   type="password"
                   name="password"
                   id="password"
-                  className="mb-3"
                   placeholder="Password"
+                  className="mb-3"
                   onChange={this.onChange}
                 />
-                <Button color="dark" style={{ marginTop: "2rem" }}>
+                <Button color="dark" style={{ marginTop: "2rem" }} block>
                   Login
                 </Button>
               </FormGroup>
@@ -121,7 +121,7 @@ class LoginModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.isAuthenticated,
+  isAuthenticated: state.auth.isAuthenticated,
   error: state.error,
 });
 
