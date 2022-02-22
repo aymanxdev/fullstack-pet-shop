@@ -1,4 +1,6 @@
-## Pet shop creattion in progress 🔧 👨‍💻
+## Pet shop  🐈 
+ This project is discontinued. ⛔️ 
+
 
 
 
