@@ -1,5 +1,5 @@
 ## Pets shop  🐈 
- This project is discontinued. ⛔️ 
+This project is discontinued. ⛔️ 
 
 
 
