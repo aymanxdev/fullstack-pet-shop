@@ -1,4 +1,4 @@
-## Pet shop  🐈 
+## Pets shop  🐈 
  This project is discontinued. ⛔️ 
 
 
